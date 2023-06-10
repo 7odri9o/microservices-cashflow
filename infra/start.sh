@@ -7,3 +7,5 @@ cd postgres
 cd auth-db
 docker-compose up -d
 cd ..
+
+cd ..
