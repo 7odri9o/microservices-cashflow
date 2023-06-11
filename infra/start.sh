@@ -12,4 +12,8 @@ cd cashin-db
 docker-compose up -d
 cd ..
 
+cd cashout-db
+docker-compose up -d
+cd ..
+
 cd ..
