@@ -17,3 +17,7 @@ cd ..
 cd wallet
 docker-compose up -d
 cd ..
+
+cd balance
+docker-compose up -d
+cd ..
