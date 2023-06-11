@@ -1,0 +1,28 @@
+version: '3.8'
+
+name: 'cashout-db'
+
+services:
+  cashout-db:
+    image: postgres:15
+    container_name: cashout-db
+    hostname: cashout-db
+    restart: always
+    ports:
+      - '${POSTGRES_PORT}:5432'
+    networks:
+      microservices-cashflow:
+        ipv4_address: ${IP_ADDRESS}
+    env_file:
+      - .env
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+networks:
+  microservices-cashflow:
+    external: true
