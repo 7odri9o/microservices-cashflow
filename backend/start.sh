@@ -13,3 +13,7 @@ cd ..
 cd cashout
 docker-compose up -d
 cd ..
+
+cd wallet
+docker-compose up -d
+cd ..
