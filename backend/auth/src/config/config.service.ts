@@ -1,13 +1,14 @@
 import { Injectable, LogLevel } from '@nestjs/common';
 import { ConfigService as NestConfigService } from '@nestjs/config';
 import { parseListUtil } from '@/util';
-import { AppConfig, AuthConfig, DbConfig, Logging } from '@/config';
+import { AppConfig, AuthConfig, DbConfig, Logging, MicroserviceConfig } from '@/config';
 
 @Injectable()
 export class ConfigService {
   readonly app: AppConfig;
   readonly auth: AuthConfig;
   readonly db: DbConfig;
+  readonly microserviceConfig: MicroserviceConfig;
   readonly logging: Logging;
 
   constructor(nestConfigService: NestConfigService) {
@@ -22,6 +23,11 @@ export class ConfigService {
 
     this.db = {
       url: nestConfigService.getOrThrow('DATABASE_URL'),
+    };
+
+    this.microserviceConfig = {
+      host: nestConfigService.getOrThrow('TCP_HOST'),
+      port: parseInt(nestConfigService.getOrThrow('TCP_PORT'), 10),
     };
 
     let logLevels = parseListUtil(nestConfigService.getOrThrow('LOG_LEVELS'));
