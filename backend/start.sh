@@ -9,3 +9,7 @@ cd ..
 cd cashin
 docker-compose up -d
 cd ..
+
+cd cashout
+docker-compose up -d
+cd ..
