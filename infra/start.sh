@@ -21,3 +21,11 @@ docker-compose up -d
 cd ..
 
 cd ..
+
+cd redis
+
+cd cache-db
+docker-compose up -d
+cd ..
+
+cd ..
