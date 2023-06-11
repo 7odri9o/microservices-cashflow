@@ -16,4 +16,8 @@ cd cashout-db
 docker-compose up -d
 cd ..
 
+cd wallet-db
+docker-compose up -d
+cd ..
+
 cd ..
